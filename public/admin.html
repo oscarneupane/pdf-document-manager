@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oscar Portfolio Admin</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121933;
+      --panel-2: #1a2345;
+      --text: #eaf0ff;
+      --muted: #9fb0df;
+      --accent: #6ee7ff;
+      --accent-2: #8b5cf6;
+      --border: rgba(255,255,255,0.1);
+      --success: #22c55e;
+      --danger: #ef4444;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, var(--bg), #0f172a 50%, #111827);
+      color: var(--text);
+    }
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .title h1 { margin: 0 0 8px; font-size: 2rem; }
+    .title p { margin: 0; color: var(--muted); }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #08111f;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 20px;
+    }
+    .card {
+      background: rgba(18, 25, 51, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      margin-bottom: 20px;
+    }
+    .card h2 {
+      margin: 0 0 16px;
+      font-size: 1.2rem;
+    }
+    .field { margin-bottom: 14px; }
+    .field label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    input, textarea {
+      width: 100%;
+      background: var(--panel-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.95rem;
+    }
+    textarea { min-height: 100px; resize: vertical; }
+    .two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .hint {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 8px;
+    }
+    .status {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      display: none;
+    }
+    .status.show { display: block; }
+    .status.success { background: rgba(34, 197, 94, 0.15); color: #bbf7d0; border: 1px solid rgba(34, 197, 94, 0.35); }
+    .status.error { background: rgba(239, 68, 68, 0.15); color: #fecaca; border: 1px solid rgba(239, 68, 68, 0.35); }
+    .preview {
+      white-space: pre-wrap;
+      line-height: 1.6;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    code {
+      background: rgba(255,255,255,0.08);
+      padding: 2px 6px;
+      border-radius: 6px;
+      color: #dbeafe;
+    }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .two { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="title">
+        <h1>Portfolio Admin Panel</h1>
+        <p>Update your portfolio content without editing the HTML manually.</p>
+      </div>
+      <div class="actions">
+        <a class="btn secondary" href="index.html" target="_blank" rel="noopener">Open Portfolio</a>
+        <button class="btn secondary" id="resetBtn" type="button">Reset Saved Data</button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <form id="adminForm">
+          <div class="card">
+            <h2>Hero Section</h2>
+            <div class="two">
+              <div class="field">
+                <label for="name">Full Name</label>
+                <input id="name" value="Oscar Neupane" />
+              </div>
+              <div class="field">
+                <label for="location">Location</label>
+                <input id="location" value="Sydney, NSW" />
+              </div>
+            </div>
+            <div class="two">
+              <div class="field">
+                <label for="heroRoleTop">Hero Title Line 1</label>
+                <input id="heroRoleTop" value="IT SUPPORT" />
+              </div>
+              <div class="field">
+                <label for="heroRoleBottom">Hero Title Line 2</label>
+                <input id="heroRoleBottom" value="SPECIALIST" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="heroTag">Top Tag</label>
+              <input id="heroTag" value="// AVAILABLE IMMEDIATELY" />
+            </div>
+            <div class="field">
+              <label for="heroSub">Hero Description</label>
+              <textarea id="heroSub">Bachelor of Information Technology graduate focused on desktop support, Active Directory, Windows systems and web technologies.</textarea>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>About Section</h2>
+            <div class="field">
+              <label for="about1">About Paragraph 1</label>
+              <textarea id="about1">I'm Oscar Neupane, an IT Support Specialist and recent Bachelor of Information Technology graduate with hands-on experience in desktop support, troubleshooting, system administration, and user support.</textarea>
+            </div>
+            <div class="field">
+              <label for="about2">About Paragraph 2</label>
+              <textarea id="about2">I enjoy helping people solve technical issues, working with Windows environments, managing user accounts in Active Directory, and building practical solutions with SQL and web technologies.</textarea>
+            </div>
+            <div class="field">
+              <label for="tags">About Tags</label>
+              <input id="tags" value="Problem Solver, Customer Support, Fast Learner, Team Player" />
+              <div class="hint">Separate each tag with a comma.</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Contact Section</h2>
+            <div class="two">
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" value="neupaneoscar143@gmail.com" />
+              </div>
+              <div class="field">
+                <label for="availability">Availability</label>
+                <input id="availability" value="Available Immediately · Full-Time" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="contactBlurb">Contact Intro</label>
+              <textarea id="contactBlurb">I'm open to graduate IT support, desktop support, service desk, and junior technical roles in Sydney or remote-friendly environments.</textarea>
+            </div>
+            <div class="two">
+              <div class="field">
+                <label for="linkedin">LinkedIn URL</label>
+                <input id="linkedin" value="https://www.linkedin.com/in/oscar-neupane" />
+              </div>
+              <div class="field">
+                <label for="github">GitHub URL</label>
+                <input id="github" placeholder="https://github.com/yourusername" />
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Skills</h2>
+            <div class="field">
+              <label for="skillsJson">Skills JSON</label>
+              <textarea id="skillsJson">[
+  {"icon":"🧠","title":"Desktop Support","desc":"Help desk troubleshooting, hardware and software support, end-user assistance","pct":90},
+  {"icon":"🏢","title":"Active Directory","desc":"User account provisioning, group policies, remote administration, account management","pct":88},
+  {"icon":"🖥️","title":"Windows Server","desc":"System configuration, profile management, patching, backup procedures","pct":84},
+  {"icon":"🌐","title":"HTML, CSS & JavaScript","desc":"Responsive web interfaces, front-end development, semantic structure and ES6 basics","pct":82},
+  {"icon":"🗄️","title":"SQL & MySQL","desc":"Queries, joins, data management, structured database work and reporting","pct":85},
+  {"icon":"📊","title":"Excel, Power BI & Tableau","desc":"PivotTables, VLOOKUP, dashboards, data cleaning and performance visualisation","pct":80}
+]</textarea>
+              <div class="hint">Edit carefully. Keep valid JSON format.</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Projects</h2>
+            <div class="field">
+              <label for="projectsJson">Projects JSON</label>
+              <textarea id="projectsJson">[
+  {"title":"Active Directory Home Lab Setup","desc":"Built a virtualized IT environment using VMware Workstation to deploy and manage Active Directory on Windows Server. Configured users, groups, and Group Policy Objects for centralized administration.","tech":"VMware, Windows Server, Active Directory, GPO","link":"#"},
+  {"title":"Sales Performance Dashboard","desc":"Imported and joined datasets from Excel and MySQL, then created dashboards showing regional performance, profit margins, and customer trends.","tech":"Power BI, SQL, Excel, MySQL","link":"#"},
+  {"title":"Web Development Projects","desc":"Developed responsive web interfaces using HTML, CSS, and JavaScript with SQL-backed data handling to demonstrate full-stack awareness.","tech":"HTML, CSS, JavaScript, MySQL","link":"#"}
+]</textarea>
+              <div class="hint">Each project can have title, desc, tech, and link.</div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn" type="submit">Save Changes</button>
+          </div>
+          <div id="status" class="status"></div>
+        </form>
+      </div>
+
+      <div>
+        <div class="card">
+          <h2>How it works</h2>
+          <div class="preview">This admin page saves your changes in <code>localStorage</code> in the browser.
+
+Your portfolio <code>index.html</code> reads that saved data automatically when it loads.
+
+That means:
+1. Open <code>admin.html</code>
+2. Edit your content
+3. Click <code>Save Changes</code>
+4. Refresh <code>index.html</code>
+
+If you move the site to another browser or device, you need to re-save the data there, or later connect it to a real database.</div>
+        </div>
+
+        <div class="card">
+          <h2>Best next upgrade</h2>
+          <div class="preview">For now, this is a simple admin panel.
+
+For a real live admin system later, you can connect it to:
+- Node.js + Express
+- MySQL database
+- Login authentication
+- Image upload for projects
+- Real contact form backend</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'oscarPortfolioData';
+
+    function showStatus(message, type) {
+      const box = document.getElementById('status');
+      box.textContent = message;
+      box.className = `status show ${type}`;
+    }
+
+    function parseList(value) {
+      return value.split(',').map(v => v.trim()).filter(Boolean);
+    }
+
+    function loadSavedData() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      try {
+        const data = JSON.parse(raw);
+        for (const [key, value] of Object.entries(data)) {
+          const el = document.getElementById(key);
+          if (el) {
+            if (Array.isArray(value)) {
+              if (key === 'tags') {
+                el.value = value.join(', ');
+              } else {
+                el.value = JSON.stringify(value, null, 2);
+              }
+            } else {
+              el.value = value;
+            }
+          }
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    document.getElementById('adminForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      try {
+        const data = {
+          name: document.getElementById('name').value.trim(),
+          location: document.getElementById('location').value.trim(),
+          heroRoleTop: document.getElementById('heroRoleTop').value.trim(),
+          heroRoleBottom: document.getElementById('heroRoleBottom').value.trim(),
+          heroTag: document.getElementById('heroTag').value.trim(),
+          heroSub: document.getElementById('heroSub').value.trim(),
+          about1: document.getElementById('about1').value.trim(),
+          about2: document.getElementById('about2').value.trim(),
+          tags: parseList(document.getElementById('tags').value),
+          email: document.getElementById('email').value.trim(),
+          availability: document.getElementById('availability').value.trim(),
+          contactBlurb: document.getElementById('contactBlurb').value.trim(),
+          linkedin: document.getElementById('linkedin').value.trim(),
+          github: document.getElementById('github').value.trim(),
+          skillsJson: JSON.parse(document.getElementById('skillsJson').value),
+          projectsJson: JSON.parse(document.getElementById('projectsJson').value)
+        };
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        showStatus('Saved successfully. Refresh index.html to see the changes.', 'success');
+      } catch (error) {
+        showStatus('Could not save. Check the JSON format in Skills or Projects.', 'error');
+      }
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', function () {
+      localStorage.removeItem(STORAGE_KEY);
+      location.reload();
+    });
+
+    loadSavedData();
+  </script>
+</body>
+</html>

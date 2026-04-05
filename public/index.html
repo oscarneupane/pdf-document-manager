@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Oscar Neupane | IT Support & Web Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- SCANLINE OVERLAY -->
+  <div class="scanlines"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="navbar">
+    <div class="nav-logo">&lt;OSCAR /&gt;</div>
+    <ul class="nav-links">
+      <li><a href="#hero" class="nav-link" data-text="HOME">HOME</a></li>
+      <li><a href="#about" class="nav-link" data-text="ABOUT">ABOUT</a></li>
+      <li><a href="#skills" class="nav-link" data-text="SKILLS">SKILLS</a></li>
+      <li><a href="#projects" class="nav-link" data-text="PROJECTS">PROJECTS</a></li>
+      <li><a href="#contact" class="nav-link" data-text="CONTACT">CONTACT</a></li>
+    </ul>
+    <div class="nav-toggle" id="navToggle">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-content">
+      <div class="hero-tag" id="heroTag">// AVAILABLE IMMEDIATELY</div>
+      <h1 class="hero-title">
+        <span class="glitch" data-text="IT SUPPORT" id="heroRoleTop">IT SUPPORT</span>
+        <br>
+        <span class="hero-accent" id="heroRoleBottom">SPECIALIST</span>
+      </h1>
+      <p class="hero-sub" id="heroSub">Bachelor of Information Technology graduate focused on desktop support, Active Directory, Windows systems and web technologies.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">VIEW PROJECTS</a>
+        <a href="#contact" class="btn btn-outline">CONTACT ME</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num" data-target="3">0</span><span class="stat-label">Projects</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num" data-target="10">0</span><span class="stat-label">Core Skills</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num" data-target="100">0</span><span class="stat-label">% Committed</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="code-window">
+        <div class="code-header">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="code-title">profile.js</span>
+        </div>
+        <pre class="code-body"><code><span class="c-keyword">const</span> <span class="c-var">candidate</span> = {
+  <span class="c-prop">name</span>: <span class="c-str" id="adminName">"Oscar Neupane"</span>,
+  <span class="c-prop">role</span>: <span class="c-str">"IT Support Specialist"</span>,
+  <span class="c-prop">location</span>: <span class="c-str" id="adminLocation">"Sydney, NSW"</span>,
+  <span class="c-prop">skills</span>: [
+    <span class="c-str">"Active Directory"</span>,
+    <span class="c-str">"Windows Server"</span>,
+    <span class="c-str">"Desktop Support"</span>,
+    <span class="c-str">"SQL / MySQL"</span>,
+    <span class="c-str">"HTML, CSS, JavaScript"</span>
+  ],
+  <span class="c-prop">status</span>: <span class="c-str">"Open to Work"</span>,
+  <span class="c-fn">goal</span>: () <span class="c-keyword">=></span> <span class="c-str">"Solve problems and support users"</span>
+};</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about" id="about">
+    <div class="section-label">// 01. ABOUT</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <h2 class="section-title">WHO <span class="accent">AM I</span></h2>
+        <p id="about1">I'm Oscar Neupane, an IT Support Specialist and recent Bachelor of Information Technology graduate with hands-on experience in desktop support, troubleshooting, system administration, and user support.</p>
+        <p id="about2">I enjoy helping people solve technical issues, working with Windows environments, managing user accounts in Active Directory, and building practical solutions with SQL and web technologies.</p>
+        <div class="about-tags" id="aboutTags">
+          <span class="tag">Problem Solver</span>
+          <span class="tag">Customer Support</span>
+          <span class="tag">Fast Learner</span>
+          <span class="tag">Team Player</span>
+        </div>
+        <a href="Resume.pdf" class="btn btn-primary" id="downloadCV" download>DOWNLOAD CV</a>
+      </div>
+      <div class="about-terminal">
+        <div class="terminal-header">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span style="color:var(--muted); font-size:0.75rem; margin-left:8px;">terminal</span>
+        </div>
+        <div class="terminal-body" id="terminal"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section skills" id="skills">
+    <div class="section-label">// 02. SKILLS</div>
+    <h2 class="section-title">CORE <span class="accent">SKILLS</span></h2>
+    <div class="skills-grid" id="skillsGrid">
+
+      <div class="skill-card">
+        <div class="skill-icon">🧠</div>
+        <h3>Desktop Support</h3>
+        <p>Help desk troubleshooting, hardware and software support, end-user assistance</p>
+        <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+        <span class="skill-pct">90%</span>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">🏢</div>
+        <h3>Active Directory</h3>
+        <p>User account provisioning, group policies, remote administration, account management</p>
+        <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+        <span class="skill-pct">88%</span>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">🖥️</div>
+        <h3>Windows Server</h3>
+        <p>System configuration, profile management, patching, backup procedures</p>
+        <div class="skill-bar"><div class="skill-fill" data-width="84"></div></div>
+        <span class="skill-pct">84%</span>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">🌐</div>
+        <h3>HTML, CSS & JavaScript</h3>
+        <p>Responsive web interfaces, front-end development, semantic structure and ES6 basics</p>
+        <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
+        <span class="skill-pct">82%</span>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">🗄️</div>
+        <h3>SQL & MySQL</h3>
+        <p>Queries, joins, data management, structured database work and reporting</p>
+        <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+        <span class="skill-pct">85%</span>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <h3>Excel, Power BI & Tableau</h3>
+        <p>PivotTables, VLOOKUP, dashboards, data cleaning and performance visualisation</p>
+        <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+        <span class="skill-pct">80%</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section projects" id="projects">
+    <div class="section-label">// 03. PROJECTS</div>
+    <h2 class="section-title">FEATURED <span class="accent">PROJECTS</span></h2>
+    <div class="projects-grid" id="projectsGrid">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="section-label">// 04. CONTACT</div>
+    <h2 class="section-title">GET IN <span class="accent">TOUCH</span></h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="contact-sub" id="contactBlurb">I'm open to graduate IT support, desktop support, service desk, and junior technical roles in Sydney or remote-friendly environments.</p>
+        <div class="contact-item"><span class="c-icon">📧</span><span id="contactEmail">neupaneoscar143@gmail.com</span></div>
+        <div class="contact-item"><span class="c-icon">📍</span><span id="adminLocationContact">Sydney, NSW</span></div>
+        <div class="contact-item"><span class="c-icon">💼</span><span id="availabilityText">Available Immediately · Full-Time</span></div>
+        <div class="social-links">
+          <a href="#" class="social-btn" id="githubLink" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/oscar-neupane" class="social-btn" id="linkedinLink" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+      <form class="contact-form" id="contactForm">
+        <div class="form-group">
+          <label>NAME</label>
+          <input type="text" name="name" placeholder="Recruiter Name" required />
+        </div>
+        <div class="form-group">
+          <label>EMAIL</label>
+          <input type="email" name="email" placeholder="recruiter@company.com" required />
+        </div>
+        <div class="form-group">
+          <label>MESSAGE</label>
+          <textarea name="message" rows="5" placeholder="I'd like to discuss an opportunity with you..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary full-w">SEND MESSAGE</button>
+        <div class="form-status" id="formStatus"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-line"></div>
+    <p>&lt;/&gt; Built by <span id="footerName">Oscar Neupane</span> · <span id="year"></span> · <a href="admin.html" style="color:inherit;">Admin</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    (function () {
+      const STORAGE_KEY = 'oscarPortfolioData';
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      try {
+        const data = JSON.parse(raw);
+
+        const setText = (id, value) => {
+          const el = document.getElementById(id);
+          if (el && value) el.textContent = value;
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+          setText('adminName', data.name ? '"' + data.name + '"' : data.name);
+          setText('footerName', data.name);
+          setText('adminLocation', data.location ? '"' + data.location + '"' : data.location);
+          setText('heroRoleTop', data.heroRoleTop);
+          setText('heroRoleBottom', data.heroRoleBottom);
+          setText('heroTag', data.heroTag);
+          setText('heroSub', data.heroSub);
+          setText('about1', data.about1);
+          setText('about2', data.about2);
+          setText('contactEmail', data.email);
+          setText('adminLocationContact', data.location);
+          setText('availabilityText', data.availability);
+          setText('contactBlurb', data.contactBlurb);
+
+          const linked = document.getElementById('linkedinLink');
+          if (linked && data.linkedin) linked.href = data.linkedin;
+          const github = document.getElementById('githubLink');
+          if (github && data.github) github.href = data.github;
+
+          const tagWrap = document.getElementById('aboutTags');
+          if (tagWrap && Array.isArray(data.tags) && data.tags.length) {
+            tagWrap.innerHTML = data.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+          }
+
+          const skillWrap = document.getElementById('skillsGrid');
+          if (skillWrap && Array.isArray(data.skillsJson) && data.skillsJson.length) {
+            skillWrap.innerHTML = data.skillsJson.map(skill => `
+              <div class="skill-card">
+                <div class="skill-icon">${skill.icon || '⚡'}</div>
+                <h3>${skill.title || ''}</h3>
+                <p>${skill.desc || ''}</p>
+                <div class="skill-bar"><div class="skill-fill" data-width="${Number(skill.pct) || 0}" style="width:${Number(skill.pct) || 0}%"></div></div>
+                <span class="skill-pct">${Number(skill.pct) || 0}%</span>
+              </div>
+            `).join('');
+          }
+
+          const projectWrap = document.getElementById('projectsGrid');
+          if (projectWrap && Array.isArray(data.projectsJson) && data.projectsJson.length) {
+            projectWrap.innerHTML = data.projectsJson.map(project => `
+              <div class="project-card">
+                <div class="project-content">
+                  <h3>${project.title || ''}</h3>
+                  <p>${project.desc || ''}</p>
+                  <div class="project-tech">${project.tech || ''}</div>
+                  <a class="btn btn-outline" href="${project.link || '#'}" target="_blank" rel="noopener noreferrer">View Project</a>
+                </div>
+              </div>
+            `).join('');
+          }
+        });
+      } catch (e) {
+        console.error('Admin data load failed', e);
+      }
+    })();
+  </script>
+
+</body>
+</html>
