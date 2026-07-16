@@ -1,139 +1,92 @@
-# portfolio-
-creating an portfolio for myself  to show my skills!!!!
-# 💼 Oscar Neupane — Portfolio Website
+# 📄 PDF Document Manager
 
-Welcome to my personal portfolio website. This project showcases my skills, projects, and experience as an **IT Support Specialist & Full Stack Developer**.
+A Node.js/Express web app for managing employee PDF documents in a company setting — upload, auto-organise, search, preview, email, and archive PDFs by **department** and **employee**, with everything stored in a clean, predictable folder structure.
 
----
+Built to solve a real workflow problem: HR teams drowning in loose payslips, training certificates, and leave forms scattered across inboxes and desktops.
 
-## 🚀 Live Preview
+## ✨ Features
 
-*(Add your link here after deployment)*
-👉 https://your-portfolio-link.com
+- **Bulk PDF upload** (up to 20 files at once, 50 MB each) with strict PDF-only validation
+- **Auto-organised storage** — files are filed as `uploads/<Department>/<SURNAME_Firstname>/<date>_<filename>.pdf`
+- **7 department categories** — HR, Training, Medical, Payslip, PPE, Leave Application, Compensation
+- **Full document tree API** — browse every department and employee folder as JSON
+- **Text extraction & scan** — reads PDF content with `pdf-parse` for inspection/search
+- **Email documents** — send any stored PDF as an attachment straight from the app via Nodemailer
+- **File management** — download, move between departments/employees, and delete via REST endpoints
+- **Web UI** — a dedicated documents dashboard (`/docs`) for uploading and browsing without touching the API
 
----
+## 🔌 API Overview
 
-## 📌 About Me
-
-I am a Bachelor of Information Technology graduate based in Sydney, Australia, with hands-on experience in:
-
-* IT Support & Helpdesk
-* System Administration
-* Web Development
-* Data Analysis
-
-I enjoy building real-world solutions, troubleshooting systems, and creating efficient, user-friendly applications.
-
----
+| Method | Endpoint | What it does |
+|--------|----------|--------------|
+| `GET` | `/api/docs/departments` | List department categories |
+| `GET` | `/api/docs/list` | List documents (filter by department/employee) |
+| `GET` | `/api/docs/tree` | Full folder tree as JSON |
+| `POST` | `/api/docs/upload` | Bulk-upload PDFs with department + employee metadata |
+| `GET` | `/api/docs/scan` | Extract text content from a stored PDF |
+| `GET` | `/api/docs/download` | Download a stored PDF |
+| `POST` | `/api/docs/send` | Email a stored PDF as an attachment |
+| `POST` | `/api/docs/move` | Move a document to another department/employee |
+| `DELETE` | `/api/docs/delete` | Delete a document |
 
 ## 🛠️ Tech Stack
 
-### 💻 Web Development
+- **Backend:** Node.js, Express, Multer (uploads), pdf-parse (text extraction), Nodemailer (email)
+- **Database:** MySQL (`mysql2`) for the companion portfolio/projects data
+- **Frontend:** Vanilla HTML/CSS/JavaScript dashboard — no framework needed
 
-* HTML5
-* CSS3 (Flexbox, Grid, Responsive Design)
-* JavaScript (ES6)
-* Node.js
-
-### 🗄️ Database
-
-* MySQL
-* SQL (Joins, Queries, Data Management)
-
-### 🖥️ IT & System Skills
-
-* Active Directory
-* Windows Server
-* Desktop Support
-* Remote Desktop
-* Group Policy (GPO)
-
-### 📊 Tools & Analytics
-
-* Microsoft Excel (PivotTables, VLOOKUP)
-* Power BI
-* Tableau
-
----
-
-## 📂 Features
-
-* Modern responsive UI design
-* Interactive portfolio sections
-* Admin panel (localStorage-based editing)
-* Project showcase section
-* Contact form UI
-* Downloadable CV
-
----
-
-## 📁 Project Structure
-
-```
-portfolio/
-│── index.html        # Main portfolio page
-│── admin.html        # Admin panel to update content
-│── style.css         # Styling
-│── script.js         # Functionality
-│── Resume.pdf        # Downloadable CV
-```
-
----
-
-## ⚙️ How to Run Locally
-
-1. Clone the repository:
+## 🚀 Getting Started
 
 ```bash
-git clone https://github.com/oscarneupane/portfolio.git
+git clone https://github.com/oscarneupane/pdf-document-manager.git
+cd pdf-document-manager
+npm install
+
+# configure environment
+cp .env.example .env   # or create .env with the values below
+
+npm run dev            # nodemon, or: npm start
 ```
 
-2. Open the project folder:
+Then open **http://localhost:5000/docs** for the document dashboard.
+
+`.env` values:
+
+```env
+PORT=5000
+DB_HOST=127.0.0.1
+DB_USER=your_mysql_user
+DB_PASSWORD=your_mysql_password
+DB_NAME=portfolio
+```
+
+Load the database schema (used by the portfolio/projects routes):
 
 ```bash
-cd portfolio
+mysql -u root -p < portfolio.sql
 ```
 
-3. Run using Live Server or open `index.html` in your browser.
+## 📁 How files are organised
 
----
+```
+uploads/
+├── HR/
+│   └── NEUPANE_Oscar/
+│       └── 2026-05-01_employment-contract.pdf
+├── Payslip/
+│   └── SMITH_Jane/
+│       ├── 2026-04-30_payslip-april.pdf
+│       └── 2026-05-31_payslip-may.pdf
+└── Training/
+    └── ...
+```
 
-## 🔐 Admin Panel Usage
+Surnames are upper-cased, filenames are sanitised, and every file is date-prefixed — so the archive stays consistent no matter who uploads.
 
-* Open `admin.html`
-* Edit your details, skills, and projects
-* Click **Save**
-* Refresh `index.html` to see updates
+## 📬 Contact
 
-> Note: Admin data is stored in browser localStorage (not a database).
-
----
-
-## 📈 Future Improvements
-
-* Backend integration (Node.js + MySQL)
-* Authentication system for admin panel
-* Real-time database updates
-* Deployment with custom domain
-
----
-
-## 📬 Contact Me
-
-📧 Email: [neupaneoscar143@gmail.com](mailto:neupaneoscar143@gmail.com)
-📍 Location: Sydney, Australia
-💼 LinkedIn: https://linkedin.com/in/oscar-neupane
-💻 GitHub: https://github.com/oscarneupane
-
----
-
-## ⭐ Show Your Support
-
-If you like this project, please ⭐ the repository and share it!
-
----
+**Oscar Neupane** — [neupaneoscar143@gmail.com](mailto:neupaneoscar143@gmail.com) · [GitHub](https://github.com/oscarneupane)
 
 ## 📝 License
 
-This project is open-source and available under the MIT License.
-
+MIT
